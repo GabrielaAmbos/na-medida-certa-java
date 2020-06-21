@@ -1,5 +1,6 @@
-package Classes;
+package Utilidades;
 
+import Classes.Pessoa;
 import Enums.Sexo;
 import java.io.*;
 import java.util.ArrayList;
