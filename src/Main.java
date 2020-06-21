@@ -44,13 +44,22 @@ public class Main {
                     break;
 
                 case 0:
-                    System.out.println("Saindo...");
+                    sair();
                     break;
 
                 default:
                     System.out.println("Opção inválida!!!!");
             }
         } while (escolha != 0);
+    }
+
+    private static void sair() {
+        System.out.println("Saindo...");
+        if(calculos.salvarArquivo()) {
+            System.out.println("Arquivo salvo com sucesso!");
+        } else {
+            System.out.println("Não foi possível salvar o arquivo!");
+        }
     }
 
     private static void listarTodasPessoasCadastradas() {
@@ -141,13 +150,14 @@ public class Main {
         double altura = in.nextDouble();
         in.nextLine();
 
-        System.out.print("Sexo: \n[1] Masc \n[2] Fem\n");
-        int opcaoSexo = in.nextInt();
-        in.nextLine();
-        Sexo sexo = Sexo.MASCULINO;
-        if(opcaoSexo == 2) {
-            sexo = Sexo.FEMININO;
-        }
+        int opcaoSexo;
+        do {
+            System.out.print("Sexo: \n[1] Masc \n[2] Fem\n");
+            opcaoSexo = in.nextInt();
+            in.nextLine();
+
+        } while (opcaoSexo != 1 && opcaoSexo != 2);
+        Sexo sexo = Sexo.getSexo(opcaoSexo);
 
         Pessoa pessoa = new Pessoa(nome, idade, peso, altura, sexo);
 

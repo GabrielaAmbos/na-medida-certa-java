@@ -62,17 +62,6 @@ public class Pessoa {
         return this.sexo;
     }
 
-    public String getGenero() {
-        switch (this.sexo) {
-            case MASCULINO:
-                return "Masculino";
-            case FEMININO:
-                return "Feminino";
-            default:
-                return "Outro";
-        }
-    }
-
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
@@ -81,10 +70,8 @@ public class Pessoa {
         switch (this.sexo) {
             case MASCULINO:
                 return 4;
-            case FEMININO:
-                return 2;
             default:
-                return -1;
+                return 2;
         }
     }
 
@@ -92,10 +79,8 @@ public class Pessoa {
         switch (this.sexo) {
             case MASCULINO:
                 return 1;
-            case FEMININO:
-                return 0;
             default:
-                return -1;
+                return 0;
         }
     }
 
@@ -105,7 +90,7 @@ public class Pessoa {
                 "Idade: " + idade + " anos\n" +
                 "Peso: " + peso + "kg\n" +
                 "Altura: " + altura + "m\n" +
-                "Sexo: " + getGenero();
+                "Sexo: " + sexo.getLabel();
     }
 
     public double getAlturaCM() {

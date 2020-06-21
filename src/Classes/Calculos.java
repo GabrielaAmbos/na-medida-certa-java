@@ -1,5 +1,6 @@
 package Classes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,24 @@ public class Calculos {
     private List<Pessoa> pessoas;
 
     public Calculos() {
-        this.pessoas = new ArrayList<Pessoa>();
+        try {
+            this.pessoas = Repositorio.carregar();
+        } catch (IOException e) {
+            this.pessoas = new ArrayList<Pessoa>();
+        }
+    }
+
+    public boolean salvarArquivo() {
+        try {
+            Repositorio.salvar(this.pessoas);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    public Pessoa ultimaPessoaCadastrada() {
+        return this.pessoas.get(this.pessoas.size() - 1);
     }
 
     public boolean inserir(Pessoa pessoa) {
